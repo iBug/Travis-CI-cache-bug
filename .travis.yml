@@ -4,7 +4,9 @@ language: python
 python: "3.7"
 
 before_install:
-  - ls -alR $HOME/.cache/pip/http
+  - sudo ls -alR $HOME/.cache/pip/http
+  - sudo chown -R $USER.$USER $HOME/.cache
+  - sudo rm -rf $HOME/.cache/pip/http
   - sudo ls -alR $HOME/.cache/pip/http
 
 install:
