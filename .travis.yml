@@ -7,7 +7,7 @@ before_install:
   - sudo ls -alR $HOME/.cache/pip/http
   - sudo chown -R $USER.$USER $HOME/.cache
   - sudo rm -rf $HOME/.cache/pip/http
-  - sudo ls -alR $HOME/.cache/pip/http
+  - sudo ls -alR $HOME/.cache/pip/http || true
 
 install:
   - pip3 install -r requirements.txt --upgrade
