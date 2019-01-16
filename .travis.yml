@@ -1,0 +1,28 @@
+sudo: true
+dist: xenial
+language: python
+python: "3.7"
+
+before_install:
+  - ls -alR $HOME/.cache/pip/http
+  - sudo ls -alR $HOME/.cache/pip/http
+
+install:
+  - pip3 install -r requirements.txt --upgrade
+script:
+  - echo Hahaha
+
+cache:
+  directories:
+    - $HOME/virtualenv/python3.7.*
+    - $HOME/.cache/pip
+before_cache:
+  - sudo chown -R $USER.$USER $HOME/.cache
+  - sudo rm -f $HOME/.cache/pip/log/debug.log
+  - sudo rm -rf $HOME/.cache/pip/http
+  - sudo ls -alR $HOME/.cache/pip/http
+before_deploy:
+  - sudo chown -R $USER.$USER $HOME/.cache
+  - sudo rm -f $HOME/.cache/pip/log/debug.log
+  - sudo rm -rf $HOME/.cache/pip/http
+  - sudo ls -alR $HOME/.cache/pip/http
